@@ -1,4 +1,4 @@
-# snake
+# Snake
 
 ### Compiling the Snake Game
 
