@@ -2,7 +2,7 @@
 
 # Setting up raylib for ping-pong-raylib
 
-This guide will walk you through setting up the raylib library for use in your project named "ping-pong-raylib". 
+This guide will walk you through setting up the raylib library. 
 
 ## Step 1: Clone raylib repository
 
@@ -39,7 +39,7 @@ cp raylib.h <your-path>/ping-pong-raylib
 cp raymath.h <your-path>/ping-pong-raylib
 ```
 
-### Compiling the Ping Pong Game using MacOS
+# Compiling the Ping Pong Game using MacOS
 
 To compile the Ping Pong game using MacOS, you can use the following command:
 
@@ -47,7 +47,7 @@ To compile the Ping Pong game using MacOS, you can use the following command:
 g++ -framework CoreVideo -framework IOKit -framework Cocoa -framework GLUT -framework OpenGL -std=c++11 libraylib.a pingpong.cpp -o pingpong
 ```
 
-### Running the Game
+# Running the Game
 
 To start the Ping Pong game, simply run the compiled executable:
 
