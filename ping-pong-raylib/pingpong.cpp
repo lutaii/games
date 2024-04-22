@@ -122,7 +122,7 @@ public:
 int main() {
 
   InitWindow(screen_width, screen_height, "Ping Pong Game");
-  SetTargetFPS(60);
+  SetTargetFPS(120);
 
   ClearBackground(background);
 
