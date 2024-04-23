@@ -1,4 +1,5 @@
 #include "raylib.h"
+#include "raymath.h"
 #include <cstdlib>
 #include <deque>
 #include <iostream>
@@ -10,18 +11,37 @@ Color darkGreen = {43, 51, 24, 255};
 
 int cellSize = 30;
 int cellCount = 25;
+double lastUpdateTime = 0;
+
+bool eventTriggered(double interval) {
+  double currentTime = GetTime();
+  if (currentTime - lastUpdateTime >= interval) {
+    lastUpdateTime = currentTime;
+    return true;
+  }
+  return false;
+}
 
 class Snake {
   deque<Vector2> body = {{6, 9}, {5, 9}, {4, 9}};
 
+  Vector2 direction = {1, 0};
+
 public:
   void draw() {
     for (int i = 0; i < body.size(); i++) {
-      int x = body[i].x;
-      int y = body[i].y;
+      float x = body[i].x;
+      float y = body[i].y;
 
-      DrawRectangle(x * cellSize, y * cellSize, cellSize, cellSize, darkGreen);
+      DrawRectangleRounded(
+          {x * cellSize, y * cellSize, (float)cellSize, (float)cellSize}, 0.5,
+          6, darkGreen);
     }
+  }
+
+  void update() {
+    body.pop_back();
+    body.push_front(Vector2Add(body[0], direction));
   }
 };
 
@@ -58,6 +78,10 @@ int main() {
 
   while (!WindowShouldClose()) {
     BeginDrawing();
+
+    if (eventTriggered(0.2)) {
+      snake.update();
+    }
 
     ClearBackground(green);
     food.draw();
